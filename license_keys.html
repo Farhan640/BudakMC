@@ -3,34 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BudakMC - Rank List</title>
+    <title>Your License Keys - BudakMC</title>
     <style>
-        /* (CSS styles as before) */
+        body, html {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: #000000;
+            user-select: none;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 90vh;
+            color: white;
+        }
+
+        .license-item {
+            background-color: #222;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 10px;
+            color: #FFFFFF;
+            max-width: 400px;
+            text-align: left;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #555;
+            font-family: 'Gothic A1', sans-serif;
+        }
+
+        .footer-text {
+            font-size: 0.8em;
+            color: #aaaaaa;
+            margin-top: 15px;
+        }
     </style>
 </head>
 <body>
-    <header>
-        <a href="index.html">
-            <img src="img/logo.png" alt="BudakMC Logo" class="logo">
-        </a>
-        <nav>
-            <ul>
-                <li><a href="index.html">𝙻𝚊𝚖𝚊𝚗 𝚄𝚝𝚊𝚖𝚊</a></li>
-                <li><a href="faq.html">𝚂𝚘𝚊𝚕𝚊𝚗 𝙻𝚊𝚣𝚒𝚖</a></li>
-                <li><a href="merch.html">𝙺𝚎𝚍𝚊𝚒</a></li>
-                <li><a href="license_keys.html">License Keys</a></li>
-                <li><a href="apply_staff.html">𝙿𝚎𝚛𝚖𝚘𝚑𝚘𝚗𝚊𝚗 𝚂𝚝𝚊𝚏𝚏</a></li>
-                <li id="authLink"><a href="login.html">Login</a></li>
-            </ul>
-        </nav>
-    </header>
-
     <main>
-        <h1>Pilih Rank Anda</h1>
-        <div class="items">
-            <!-- (Rank buttons as before) -->
-        </div>
-        <div id="adminMessage" class="message"></div>
+        <h1>Your License Keys</h1>
+        <div id="licenseKeysContainer"></div>
     </main>
 
     <footer>
@@ -38,36 +59,20 @@
     </footer>
 
     <script>
-        const rankKeys = {
-            hero: ['HERO-12345', 'HERO-54321'],
-            legend: ['LEGEND-67890', 'LEGEND-98765'],
-            master: ['MASTER-11111', 'MASTER-22222'],
-            titan: ['TITAN-33333', 'TITAN-44444'],
-            vip: ['VIP-55555', 'VIP-66666'],
-            vipplus: ['VIPPLUS-77777', 'VIPPLUS-88888'],
-            mvp: ['MVP-99999', 'MVP-00000'],
-            mvpplus: ['MVPPLUS-11223', 'MVPPLUS-22334'],
-            mvpplusplus: ['MVPPLUS2-33445', 'MVPPLUS2-44556']
-        };
+        const urlParams = new URLSearchParams(window.location.search);
+        const key = urlParams.get('key');
+        const rank = urlParams.get('rank');
 
-        const usedKeys = {};
+        const container = document.getElementById('licenseKeysContainer');
 
-        function purchaseRank(rank) {
-            if (usedKeys[rank]) {
-                alert(`You have already purchased the ${rank} rank. Please buy another rank.`);
-                return;
-            }
-
-            if (rankKeys[rank].length > 0) {
-                const issuedKey = rankKeys[rank].shift(); // Ambil kunci berikutnya dari senarai
-                usedKeys[rank] = issuedKey; // Tandakan kunci sebagai digunakan
-                alert(`You have purchased the ${rank} rank. Your license key is: ${issuedKey}`);
-                
-                // Redirect to license keys page with the key
-                window.location.href = `license_keys.html?key=${issuedKey}&rank=${rank}`;
-            } else {
-                document.getElementById('adminMessage').innerText = 'All keys for this rank have been used. Please contact admin for more information.';
-            }
+        if (key && rank) {
+            container.innerHTML = `
+                <div class="license-item">
+                    <strong>Rank:</strong> ${rank.charAt(0).toUpperCase() + rank.slice(1)}<br>
+                    <strong>License Key:</strong> ${key}
+                </div>`;
+        } else {
+            container.innerHTML = `<div class="license-item">No valid license key found.</div>`;
         }
     </script>
 </body>
