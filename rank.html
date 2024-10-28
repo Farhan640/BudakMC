@@ -210,6 +210,9 @@
                 const issuedKey = rankKeys[rank].shift(); // Ambil kunci berikutnya dari senarai
                 usedKeys[rank] = issuedKey; // Tandakan kunci sebagai digunakan
                 alert(`You have purchased the ${rank} rank. Your license key is: ${issuedKey}`);
+                
+                // Redirect to license keys page with the key
+                window.location.href = `license_keys.html?key=${issuedKey}&rank=${rank}`;
             } else {
                 document.getElementById('adminMessage').innerText = 'All keys for this rank have been used. Please contact admin for more information.';
             }
