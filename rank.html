@@ -132,7 +132,7 @@
                 <li><a href="merch.html">𝙺𝚎𝚍𝚊𝚒</a></li>
                 <li><a href="license_keys.html">License Keys</a></li>
                 <li><a href="apply_staff.html">𝙿𝚎𝚛𝚖𝚘𝚑𝚘𝚗𝚊𝚗 𝚂𝚝𝚊𝚏𝚏</a></li>
-                <li id="authLink"></li>
+                <li id="authLink"><a href="login.html">Login</a></li>
             </ul>
         </nav>
     </header>
@@ -185,60 +185,34 @@
     </footer>
 
     <script>
-        // Inisialisasi data pengguna jika tidak wujud
-        if (!users[loggedInUser]) {
-            users[loggedInUser] = [];  // Inisialisasi jika pengguna tidak ada
-        }
+        const rankKeys = {
+            hero: ['HERO-12345', 'HERO-54321'],
+            legend: ['LEGEND-67890', 'LEGEND-98765'],
+            master: ['MASTER-11111', 'MASTER-22222'],
+            titan: ['TITAN-33333', 'TITAN-44444'],
+            vip: ['VIP-55555', 'VIP-66666'],
+            vipplus: ['VIPPLUS-77777', 'VIPPLUS-88888'],
+            mvp: ['MVP-99999', 'MVP-00000'],
+            mvpplus: ['MVPPLUS-11223', 'MVPPLUS-22334'],
+            mvpplusplus: ['MVPPLUS2-33445', 'MVPPLUS2-44556']
+        };
 
-        // Jejak kunci yang telah digunakan
-        function trackUsedKeys() {
-            const keys = {};
-            for (const user in issuedKeys) {
-                keys[user] = issuedKeys[user].slice(); // Simpan salinan kunci yang telah digunakan
-            }
-            return keys;
-        }
-
-        const authLink = document.getElementById('authLink');
-        authLink.innerHTML = `<a href="#" onclick="logout()">Logout</a>`;
-
-        function logout() {
-            loggedInUser = null;
-            alert('You have been logged out.');
-            authLink.innerHTML = `<a href="login.html">Login</a>`;
-        }
+        // Simpan kunci yang telah digunakan
+        const usedKeys = {};
 
         function purchaseRank(rank) {
-            if (!loggedInUser) {
-                alert('Please log in before purchasing a rank.');
+            if (usedKeys[rank]) {
+                alert(`You have already purchased the ${rank} rank. Please buy another rank.`);
                 return;
             }
 
-            // Periksa jika pengguna telah membeli rank ini
-            if (issuedKeys[loggedInUser] && issuedKeys[loggedInUser].includes(rank)) {
-                alert(`You have already purchased the ${rank} rank. You cannot use the same key again.`);
-                return;
-            }
-
-            // Periksa jika ada kunci yang tersedia
-            if (!rankKeys[rank] || rankKeys[rank].length === 0) {
+            if (rankKeys[rank].length > 0) {
+                const issuedKey = rankKeys[rank].shift(); // Ambil kunci berikutnya dari senarai
+                usedKeys[rank] = issuedKey; // Tandakan kunci sebagai digunakan
+                alert(`You have purchased the ${rank} rank. Your license key is: ${issuedKey}`);
+            } else {
                 document.getElementById('adminMessage').innerText = 'All keys for this rank have been used. Please contact admin for more information.';
-                return;
             }
-
-            // Dapatkan kunci yang berikutnya yang tersedia
-            const issuedKey = rankKeys[rank].shift(); // Hapus kunci dari senarai yang tersedia
-
-            // Simpan kunci untuk pengguna yang masuk
-            users[loggedInUser].push({ rank: rank, key: issuedKey });
-
-            // Jejak kunci yang dikeluarkan untuk pengguna
-            if (!issuedKeys[loggedInUser]) {
-                issuedKeys[loggedInUser] = []; // Inisialisasi jika pengguna tidak ada
-            }
-            issuedKeys[loggedInUser].push(issuedKey); // Tandakan kunci sebagai digunakan
-
-            alert(`You have purchased the ${rank} rank. Your license key is: ${issuedKey}`);
         }
     </script>
 </body>
