@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - BudakMC</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 90%;
+            max-width: 600px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        button:hover:not(:disabled) {
+            background-color: #45a049;
+        }
+
+        .store-button {
+            background-color: #FF6347;
+        }
+
+        .store-button:hover {
+            background-color: #FF4500;
+        }
+
+        .items {
+            margin-bottom: 20px;
+        }
+
+        .item {
+            background-color: #222;
+            color: white;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .order-summary {
+            margin-top: 20px;
+            text-align: right;
+        }
+
+        .order-summary span {
+            font-weight: bold;
+        }
+
+        .total {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Your Cart</h1>
+
+    <div class="items" id="cartItems">
+        <!-- Items will be dynamically added here -->
+    </div>
+
+    <div class="order-summary">
+        <span>Total: RM<span id="totalPrice">0.00</span></span><br>
+        <button id="completeOrderButton" onclick="completeOrder()" disabled>Complete Order</button><br><br>
+        <button class="store-button" onclick="goToStore()">Go to Store</button>
+    </div>
+</div>
+
+<script>
+    let cart = [
+        { name: 'Hero Rank', price: 11.00 }
+    ];
+
+    function displayCartItems() {
+        const cartItemsDiv = document.getElementById('cartItems');
+        cartItemsDiv.innerHTML = ''; 
+        let totalAmount = 0;
+
+        cart.forEach((item, index) => {
+            const itemDiv = document.createElement('div');
+            itemDiv.classList.add('item');
+            itemDiv.innerHTML = `
+                <span>${item.name}</span>
+                <span>RM${item.price.toFixed(2)}</span>
+            `;
+            cartItemsDiv.appendChild(itemDiv);
+            totalAmount += item.price;
+        });
+
+        document.getElementById('totalPrice').innerText = totalAmount.toFixed(2);
+        document.getElementById('completeOrderButton').disabled = totalAmount === 0;
+    }
+
+    function completeOrder() {
+        const customerName = "John Doe"; // Replace with dynamic input if necessary
+        const totalAmount = parseFloat(document.getElementById('totalPrice').innerText) * 100;
+
+        fetch('http://localhost/checkout/index.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name: customerName, amount: totalAmount })
+        })
+        .then(response => response.json())
+        .then(result => {
+            if (result[0] && result[0].BillCode) {
+                const billCode = result[0].BillCode;
+                window.location.href = `https://toyyibpay.com/${billCode}`;
+            } else {
+                alert('Failed to create bill. Please try again.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again.');
+        });
+    }
+
+    function goToStore() {
+        window.location.href = 'merch.html';
+    }
+
+    displayCartItems();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Master Rank - BudakMC</title>
+    <style>
+        /* Same styling as the Hero Rank page */
+        body, html {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: #000000;
+            user-select: none;
+            overflow: auto;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #333;
+        }
+
+        .logo {
+            height: 150px;
+            margin-right: 20px;
+        }
+
+        nav {
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .cart-icon img {
+            height: 40px;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            background-color: red;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 50%;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 90vh;
+            padding: 20px;
+        }
+
+        .rank-info {
+            background-color: #222;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .rank-info h1 {
+            color: #FFD700;
+            margin-bottom: 20px;
+        }
+
+        .rank-info p {
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .rank-info button {
+            background-color: #FF6347;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .rank-info button:hover {
+            background-color: #FF4500;
+        }
+
+        /* Footer styling for adikberadik logo */
+        .adikberadik-footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #555;
+            font-family: 'Gothic A1', sans-serif;
+        }
+
+        .footer-logo-img {
+            width: 300px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        .footer-links a {
+            color: #ffffff;
+            margin: 0 15px;
+            font-size: 0.9em;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .social-media {
+            margin-top: 10px;
+        }
+
+        .social-media a {
+            margin: 0 10px;
+        }
+
+        .social-media img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .footer-text {
+            font-size: 0.8em;
+            color: #aaaaaa;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/index.html">
+            <img src="/img/logo.png" alt="BudakMC Logo" class="logo">
+        </a>
+        <nav>
+            <ul id="navLinks">
+                <li><a href="index.html">Laman Utama</a></li>
+                <li><a href="faq.html">Soalan Lazim</a></li>
+                <li><a href="merch.html">Kedai</a></li>
+                <li><a href="license_keys.html">License Keys</a></li>
+                <li><a href="apply_staff.html">Permohonan Staff</a></li>
+                <li id="loginLink"><a href="#" onclick="showLoginForm()">Login</a></li>
+                <li id="registerLink"><a href="#" onclick="showRegisterForm()">Register</a></li>
+                <li id="profileLink" style="display:none;"><a href="#" onclick="showProfilePage()">Profile</a></li>
+                <li id="logoutLink" style="display:none;"><a href="#" onclick="logout()">Logout</a></li>
+            </ul>
+        </nav>
+        <div class="cart-icon">
+            <a href="/checkout.html"><img src="/img/cart.png" alt="Cart Icon"></a>
+            <span class="cart-count" id="cartCount">0</span>
+        </div>
+    </header>
+
+    <main>
+        <div class="rank-info">
+            <h1>Master Rank</h1>
+            <p>Unlock special abilities with the Master rank. Enjoy even more perks!</p>
+            <button onclick="addToCart('Master Rank', 24)">Add to Cart for RM24</button>
+        </div>
+    </main>
+
+    <footer class="adikberadik-footer">
+        <div class="footer-logo">
+            <img src="/img/logo.png" alt="Kris Community Logo" class="footer-logo-img">
+        </div>
+        <div class="footer-links">
+            <a href="/index.html">𝙻𝚊𝚖𝚊𝚗 𝚄𝚝𝚊𝚖𝚊</a> |
+            <a href="/error.html">𝙲𝚊𝚗𝚌𝚎𝚕𝚕𝚊𝚝𝚒𝚘𝚗 𝙿𝚘𝚕𝚒𝚌𝚢</a> |
+            <a href="/error.html">𝙿𝚛𝚒𝚟𝚊𝚌𝚢 𝙿𝚘𝚕𝚒𝚌𝚢</a> |
+            <a href="/error.html">𝚃𝚎𝚛𝚖𝚜 & 𝙲𝚘𝚗𝚍𝚒𝚝𝚒𝚘𝚗𝚜</a> |
+            <a href="/error.html">𝙲𝚘𝚗𝚝𝚊𝚌𝚝 𝚄𝚜</a>
+        </div>
+        <div class="social-media">
+            <a href="https://www.tiktok.com/@kriscommunity" target="_blank"><img src="/img/tiktok-icon.png" alt="TikTok"></a>
+            <a href="https://www.youtube.com/@KRISCommunity" target="_blank"><img src="/img/youtube-icon.png" alt="YouTube"></a>
+            <a href="https://discord.gg/hCDqsGnPA5" target="_blank"><img src="/img/discord-icon.png" alt="Discord"></a>
+        </div>
+        <p class="footer-text">&copy; 2024 BudakMC, All Rights Reserved | Dev by Farhan</p>
+    </footer>
+
+    <script>
+        // Initialize an empty cart or load from localStorage
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        updateCartCount();
+
+        // Function to add item to the cart
+        function addToCart(itemName, itemPrice) {
+            cart.push({ name: itemName, price: itemPrice });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            alert(itemName + " added to cart!");
+        }
+
+        // Update the cart icon count
+        function updateCartCount() {
+            const cartCount = document.getElementById('cartCount');
+            cartCount.innerText = cart.length;
+        }
+    </script>
+</body>
+</html>

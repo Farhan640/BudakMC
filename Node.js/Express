@@ -1,0 +1,35 @@
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+const crypto = require('crypto');
+
+app.use(bodyParser.json());
+
+let codes = {}; // Store redemption codes
+
+app.post('/payment-webhook', (req, res) => {
+    const paymentData = req.body;
+
+    // Verify payment here (check payment status, amount, etc.)
+    if (paymentData.status === 'success') {
+        const userEmail = paymentData.user; // Assuming user info is in payment data
+        const rankPurchased = paymentData.rank; // Get the rank purchased
+
+        // Generate a unique redemption code
+        const redemptionCode = crypto.randomBytes(4).toString('hex'); // Generate a random code
+        codes[redemptionCode] = { email: userEmail, rank: rankPurchased }; // Store the code with user info
+
+        // Here, you could also send an email to the user with their code if needed
+
+        // Redirect the user to the Thank You page with the code
+        res.redirect(`/thank-you.html?code=${redemptionCode}`); // Redirect to the thank you page
+    } else {
+        // Handle payment failure
+        res.status(400).send('Payment not successful');
+    }
+});
+
+// Start server
+app.listen(3000, () => {
+    console.log('Server is listening on port 3000');
+});

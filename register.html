@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register - BudakMC</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body, html {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .register-container {
+            background-color: #222;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        input {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        button {
+            background-color: #FF6347;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            max-width: 300px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #FF4500;
+        }
+
+        .login-button {
+            background-color: #444;
+            margin-top: 10px;
+        }
+
+        .login-button:hover {
+            background-color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <h1>Register to BudakMC</h1>
+        <input type="text" id="name" placeholder="Enter your name" required><br>
+        <input type="email" id="email" placeholder="Enter your email" required><br>
+        <input type="password" id="password" placeholder="Enter your password" required><br>
+        <button onclick="register()">Register</button>
+        <button class="login-button" onclick="redirectToLogin()">Login</button>
+    </div>
+
+    <script>
+        function register() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (!name || !email || !password) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            // Check if the name or email is already registered
+            const allUsers = JSON.parse(localStorage.getItem('users')) || [];
+            const nameExists = allUsers.some(user => user.name === name);
+            const emailExists = allUsers.some(user => user.email === email);
+
+            if (nameExists) {
+                alert('This name is already registered. Please choose a different name.');
+                return;
+            }
+
+            if (emailExists) {
+                alert('This email is already registered. Please use a different email.');
+                return;
+            }
+
+            // Save the new user
+            const newUser = { name, email, password };
+            allUsers.push(newUser);
+            localStorage.setItem('users', JSON.stringify(allUsers));
+
+            alert('Registration successful! You can now log in.');
+            window.location.href = 'login.html'; // Redirect to login page
+        }
+
+        function redirectToLogin() {
+            window.location.href = 'login.html'; // Redirect to login page
+        }
+    </script>
+</body>
+</html>

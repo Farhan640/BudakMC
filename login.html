@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - BudakMC</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body, html {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-container {
+            background-color: #222;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        input {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        button {
+            background-color: #FF6347;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            max-width: 300px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #FF4500;
+        }
+
+        .register-button {
+            background-color: #444;
+            margin-top: 10px;
+        }
+
+        .register-button:hover {
+            background-color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login to BudakMC</h1>
+        <input type="text" id="name" placeholder="Enter your name" required><br>
+        <input type="password" id="password" placeholder="Enter your password" required><br>
+        <button onclick="login()">Login</button>
+        <button class="register-button" onclick="redirectToRegister()">Register</button>
+    </div>
+
+    <script>
+        function login() {
+            const name = document.getElementById('name').value;
+            const password = document.getElementById('password').value;
+
+            const allUsers = JSON.parse(localStorage.getItem('users')) || [];
+            const user = allUsers.find(user => user.name === name && user.password === password);
+
+            if (user) {
+                localStorage.setItem('loggedInUser', name);
+                alert(`Welcome, ${name}!`);
+                window.location.href = 'rank.html'; // Redirect to rank list
+            } else {
+                alert('Invalid name or password.');
+            }
+        }
+
+        function redirectToRegister() {
+            window.location.href = 'register.html'; // Redirect to register page
+        }
+    </script>
+</body>
+</html>

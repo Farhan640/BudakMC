@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - BudakMC</title>
+    <style>
+        /* Reuse the styles from index.html */
+        body, html {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: #000000;
+            user-select: none;
+            overflow: auto;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #333;
+        }
+
+        .logo {
+            height: 150px;
+            margin-right: 20px;
+        }
+
+        nav {
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+            flex-direction: column;
+        }
+
+        .profile-container {
+            background-color: rgba(68, 68, 68, 0.8);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            width: 300px;
+            text-align: center;
+        }
+
+        .profile-container p {
+            margin: 10px 0;
+            color: white;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #1e90ff;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html">
+            <img src="img/logo.png" alt="BudakMC Logo" class="logo">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">𝙻𝚊𝚖𝚊𝚗 𝚄𝚝𝚊𝚖𝚊</a></li>
+                <li><a href="faq.html">𝚂𝚘𝚊𝚕𝚊𝚗 𝙻𝚊𝚣𝚒𝚖</a></li>
+                <li><a href="merch.html">𝙺𝚎𝚍𝚊𝚒</a></li>
+                <li><a href="license_keys.html">License Keys</a></li>
+                <li><a href="apply_staff.html">𝙿𝚎𝚛𝚖𝚘𝚑𝚘𝚗𝚊𝚗 𝚂𝚝𝚊𝚏𝚏</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="#" onclick="logout()">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="profile-container">
+            <h2>Your Profile</h2>
+            <p id="userName"></p>
+            <p id="userEmail"></p>
+            <p id="userPassword"></p>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </main>
+
+    <footer class="adikberadik-footer">
+        <p class="footer-text">&copy; 2024 BudakMC, All Rights Reserved</p>
+    </footer>
+
+    <script>
+        const user = JSON.parse(localStorage.getItem('user'));
+
+        if (user) {
+            document.getElementById('userName').textContent = `Name: ${user.name}`;
+            document.getElementById('userEmail').textContent = `Email: ${user.email}`;
+            document.getElementById('userPassword').textContent = `Password: ${user.password}`;
+        } else {
+            alert('No user logged in.');
+            window.location.href = 'login.html';
+        }
+
+        function logout() {
+            localStorage.removeItem('user');
+            alert('Logged out successfully.');
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>

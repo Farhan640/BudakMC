@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your License Keys - BudakMC</title>
+    <style>
+        body, html {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: #000000;
+            user-select: none;
+        }
+
+        header {
+            background-color: #333;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #555;
+            font-family: 'Gothic A1', sans-serif;
+        }
+
+        .license-item {
+            background-color: #222;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 10px;
+            color: #FFFFFF;
+            max-width: 400px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Your License Keys</h1>
+        <div id="authLink"></div>
+    </header>
+
+    <main>
+        <div id="licenseKeysContainer"></div>
+    </main>
+
+    <footer>
+        <p class="footer-text">&copy; 2024 BudakMC, All Rights Reserved | Dev by Farhan</p>
+    </footer>
+
+    <script>
+        const users = {};
+        let loggedInUser = 'user1'; // Simulated user for testing
+
+        // Function to simulate user login
+        function login(username) {
+            loggedInUser = username;
+            if (!users[username]) {
+                users[username] = []; // Initialize if user doesn't exist
+            }
+        }
+
+        // Simulating user login for demonstration purposes
+        login('user1'); // Replace 'user1' with the actual username for testing
+
+        const authLink = document.getElementById('authLink');
+        authLink.innerHTML = `<a href="#" onclick="logout()">Logout</a>`;
+
+        function logout() {
+            loggedInUser = null;
+            alert('You have been logged out.');
+            authLink.innerHTML = `<a href="login.html">Login</a>`;
+        }
+
+        const container = document.getElementById('licenseKeysContainer');
+
+        // Display the license keys specific to the logged-in user
+        if (loggedInUser && users[loggedInUser]) {
+            const userKeys = users[loggedInUser];
+
+            if (userKeys.length === 0) {
+                container.innerHTML = `
+                    <div class="license-item">
+                        No license keys found for your account.
+                    </div>`;
+            } else {
+                userKeys.forEach(keyInfo => {
+                    container.innerHTML += `
+                        <div class="license-item">
+                            <strong>Rank:</strong> ${keyInfo.rank}<br>
+                            <strong>License Key:</strong> ${keyInfo.key}
+                        </div>`;
+                });
+            }
+        } else {
+            container.innerHTML = `
+                <div class="license-item">
+                    No license keys found for your account.
+                </div>`;
+        }
+    </script>
+</body>
+</html>

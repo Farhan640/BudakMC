@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment for Hero Rank - BudakMC</title>
+    <style>
+        body, html {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: #000000;
+            user-select: none; /* Disable text/image selection */
+            overflow: auto; /* Allows scrolling to reach the footer */
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #333;
+        }
+
+        .logo {
+            height: 150px;
+            margin-right: 20px;
+        }
+
+        nav {
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 90vh;
+            padding-top: 20px; /* Space from top */
+        }
+
+        .button {
+            background-color: #FF6347;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        .button:hover {
+            background-color: #FF4500;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #555;
+            font-family: 'Gothic A1', sans-serif;
+            color: #ffffff;
+        }
+
+        .footer-logo-img {
+            width: 300px; /* Adjusted size to make it smaller */
+            height: auto;
+        }
+
+        .footer-links a {
+            color: #ffffff;
+            margin: 0 15px;
+            font-size: 0.9em;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .social-media {
+            margin-top: 10px;
+        }
+
+        .social-media a {
+            margin: 0 10px;
+        }
+
+        .social-media img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .footer-text {
+            font-size: 0.8em;
+            color: #aaaaaa;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/index.html">
+            <img src="/img/logo.png" alt="BudakMC Logo" class="logo">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="/index.html">𝙻𝚊𝚖𝚊𝚗 𝚄𝚝𝚊𝚖𝚊</a></li>
+                <li><a href="/faq.html">𝚂𝚘𝚊𝚕𝚊𝚗 𝙻𝚊𝚣𝚒𝚖</a></li>
+                <li><a href="/merch.html">𝙺𝚎𝚍𝚊𝚒</a></li>
+                <li><a href="/license_keys.html">License Keys</a></li>
+                <li><a href="/apply_staff.html">𝙿𝚎𝚛𝚖𝚘𝚑𝚘𝚗𝚊𝚗 𝚂𝚝𝚊𝚏𝚏</a></li>
+                <li><a href="/profile.html">Profile</a></li>
+                <li><a href="/login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Purchase Hero Rank</h1>
+        <p>Unlock powerful perks with the Hero rank. Enjoy special abilities and more!</p>
+        <p>Price: RM11</p>
+        <button class="button" id="payButton">Pay Now</button>
+    </main>
+
+    <footer>
+        <div class="footer-logo">
+            <img src="/img/logo.png" alt="Kris Community Logo" class="footer-logo-img">
+        </div>
+        <div class="footer-links">
+            <a href="/index.html">𝙻𝚊𝚖𝚊𝚗 𝚄𝚝𝚊𝚖𝚊</a> |
+            <a href="/error.html">𝙲𝚊𝚗𝚌𝚎𝚕𝚕𝚊𝚝𝚒𝚘𝚗 𝙿𝚘𝚕𝚒𝚌𝚢</a> |
+            <a href="/error.html">𝙿𝚛𝚒𝚟𝚊𝚌𝚢 𝙿𝚘𝚕𝚒𝚌𝚢</a> |
+            <a href="/error.html">𝚃𝚎𝚛𝚖𝚜 & 𝙲𝚘𝚗𝚍𝚒𝚝𝚒𝚘𝚗𝚜</a> |
+            <a href="/error.html">𝙲𝚘𝚗𝚝𝚊𝚌𝚝 𝚄𝚜</a>
+        </div>
+        <div class="social-media">
+            <a href="https://www.tiktok.com/@kriscommunity" target="_blank"><img src="/img/tiktok-icon.png" alt="TikTok"></a>
+            <a href="https://www.youtube.com/@KRISCommunity" target="_blank"><img src="/img/youtube-icon.png" alt="YouTube"></a>
+            <a href="https://discord.gg/hCDqsGnPA5" target="_blank"><img src="/img/discord-icon.png" alt="Discord"></a>
+        </div>
+        <p class="footer-text">&copy; 2024 BudakMC, All Rights Reserved | Dev by Farhan</p>
+    </footer>
+
+    <script>
+        const availableKeys = ["15161", "512415"]; // Array of available license keys
+
+        document.getElementById('payButton').addEventListener('click', function() {
+            if (availableKeys.length === 0) {
+                alert("No license keys available.");
+                return;
+            }
+            
+            const issuedKey = availableKeys.shift(); // Issue the first available key
+            sessionStorage.setItem('lastLicenseKey', issuedKey); // Store the issued key in sessionStorage
+            
+            // Redirect to license page for testing
+            window.location.href = "/License_Keys.html"; // Change this link as needed
+        });
+    </script>
+</body>
+</html>

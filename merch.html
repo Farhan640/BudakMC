@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kedai - BudakMC</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #333;
+        }
+
+        .logo {
+            height: 150px;
+            margin-right: 20px;
+        }
+
+        nav {
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+        }
+
+        /* General styling for sections */
+        main {
+            padding: 20px;
+        }
+
+        .section {
+            color: white;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .section h1 {
+            margin-bottom: 20px;
+        }
+
+        .section .items {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .item {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            width: 250px;
+            height: 250px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        .item h2 {
+            margin-bottom: 10px;
+            color: #FFD700;
+        }
+
+        .item p {
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #FF6347;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: auto;
+        }
+
+        button:hover {
+            background-color: #FF4500;
+        }
+
+        /* Specific background image for each item */
+        .item.rank {
+            background-image: url('img/rank-background.jpg'); /* Replace with the path to your rank background image */
+        }
+
+        .item.survival {
+            background-image: url('img/survival-background.jpg'); /* Replace with the path to your survival background image */
+        }
+
+        /* Footer styling */
+        .adikberadik-footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #555;
+            font-family: 'Gothic A1', sans-serif;
+        }
+
+        .footer-logo {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ffffff;
+            margin: 0 15px;
+            font-size: 0.9em;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .social-media a {
+            margin: 0 10px;
+        }
+
+        .social-media img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .footer-text {
+            font-size: 0.8em;
+            color: #aaaaaa;
+            margin-top: 15px;
+        }
+        .font.rank {
+            color: #000000;
+        }
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .cart-icon img {
+            height: 40px;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            background-color: red;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html">
+            <img src="img/logo.png" alt="BudakMC Logo" class="logo">
+        </a>
+        <nav>
+            <ul id="navLinks">
+                <li><a href="index.html">Laman Utama</a></li>
+                <li><a href="faq.html">Soalan Lazim</a></li>
+                <li><a href="merch.html">Kedai</a></li>
+                <li><a href="license_keys.html">License Keys</a></li>
+                <li><a href="apply_staff.html">Permohonan Staff</a></li>
+                <li id="authLink"></li> <!-- Placeholder for login/logout -->
+            </ul>
+    </header>
+
+    <!-- Main Section with navigation buttons -->
+    <main>
+        <div class="section">
+            <h1>Welcome to BudakMC Shop</h1>
+            <p>Choose from the following options to proceed:</p>
+            <div class="items">
+                <!-- Button for navigating to Buy Rank page -->
+                <div class="item rank">
+                    <h2 style="color: #ffffff;">Rank</h2>
+                    <p>Upgrade your rank and enjoy exclusive benefits in the game.</p>
+                    <a href="rank.html">
+                        <button>Go to Buy Rank</button>
+                    </a>
+                </div>
+
+                <!-- Button for navigating to Survival page -->
+                <div class="item survival">
+                    <h2 style="color: #ec8f0a;">Survival Perks</h2>
+                    <p>Purchase coins, battle pass, and point battle pass for survival mode.</p>
+                    <a href="survival.html">
+                        <button>Go to Buy Survival</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Section with adikberadik logo and links -->
+    <footer class="adikberadik-footer">
+        <div class="footer-logo">
+            <img src="img/logo.png" alt="BudakMC Logo" class="footer-logo-img">
+        </div>
+        <div class="footer-links">
+            <a href="index.html">𝙻𝚊𝚖𝚊𝚗 𝚄𝚝𝚊𝚖𝚊</a> |
+            <a href="error.html">𝙲𝚊𝚗𝚌𝚎𝚕𝚕𝚊𝚝𝚒𝚘𝚗 𝙿𝚘𝚕𝚒𝚌𝚢</a> |
+            <a href="error.html">𝙿𝚛𝚒𝚟𝚊𝚌𝚢 𝙿𝚘𝚕𝚒𝚌𝚢</a> |
+            <a href="error.html">𝚃𝚎𝚛𝚖𝚜 & 𝙲𝚘𝚗𝚍𝚒𝚝𝚒𝚘𝚗𝚜</a> |
+            <a href="error.html">𝙲𝚘𝚗𝚝𝚊𝚌𝚝 𝚄𝚜</a>
+        </div>
+        <div class="social-media">
+            <a href="https://www.tiktok.com/@kriscommunity" target="_blank"><img src="img/tiktok-icon.png" alt="TikTok"></a>
+            <a href="https://www.youtube.com/@KRISCommunity" target="_blank"><img src="img/youtube-icon.png" alt="YouTube"></a>
+            <a href="https://discord.gg/hCDqsGnPA5" target="_blank"><img src="img/discord-icon.png" alt="Discord"></a>
+        </div>
+        <p class="footer-text">&copy; 2024 BudakMC, All Rights Reserved | Dev by Farhan</p>
+    </footer>
+
+    <!-- Script for login check -->
+    <script>
+                const loggedInUser = localStorage.getItem('loggedInUser');
+        const authLink = document.getElementById('authLink');
+
+        if (loggedInUser) {
+            authLink.innerHTML = `<a href="#" onclick="logout()">Logout</a>`;
+        } else {
+            authLink.innerHTML = `<a href="login.html">Login</a>`;
+        }
+
+        // Logout function
+        function logout() {
+            localStorage.removeItem('loggedInUser');
+            alert('You have been logged out.');
+            window.location.href = 'login.html'; // Redirect to login
+        }
+    </script>
+</body>
+</html>

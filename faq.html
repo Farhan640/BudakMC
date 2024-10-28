@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soalan Lazim - BudakMC</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000; /* Set background color to black */
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Membuatkan logo dan nav di sebelah kiri dan kanan */
+            padding: 20px;
+            background-color: #333;
+        }
+
+        .logo {
+            height: 150px;
+            margin-right: 20px; /* Margin untuk memberi ruang antara logo dan menu */
+        }
+
+        nav {
+            flex-grow: 1; /* Membenarkan navigasi mengambil ruang yang ada */
+            text-align: center; /* Pusatkan navigasi */
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex; /* Gunakan flexbox untuk senarai navigasi */
+            justify-content: center; /* Pusatkan item-item dalam ul */
+        }
+
+        nav ul li {
+            margin-left: 20px; /* Jarak antara item navigasi */
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-family: 'Courier New', Courier, monospace; /* Guna font yang sama untuk semua pautan */
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+        }
+
+        main {
+            display: flex; /* Menggunakan flexbox */
+            justify-content: center; /* Meletakkan kandungan di tengah */
+            align-items: flex-start; /* Rata dengan permulaan */
+            padding: 20px;
+        }
+
+        .faq {
+            width: 100%; /* Memastikan bahagian FAQ mengambil lebar penuh */
+            max-width: 800px; /* Saiz maksimum untuk bahagian FAQ */
+            margin-top: 20px; /* Jarak atas */
+        }
+
+        .faq-item {
+            background-color: black; /* Change background to black for contrast */
+            border: 1px solid #ccc; /* Warna bingkai */
+            border-radius: 5px; /* Sudut bulat */
+            margin-bottom: 15px; /* Jarak antara setiap soalan */
+            padding: 15px; /* Jarak dalam bingkai */
+            color: white; /* Set the color of the FAQ content to white */
+        }
+
+        h1 {
+            text-align: center; /* Meletakkan tajuk Soalan Lazim di tengah */
+            margin: 20px 0; /* Jarak atas dan bawah untuk tajuk */
+            color: white; /* Set the color of the "Soalan Lazim" heading to white */
+        }
+        nav ul li span {
+    color: white; /* Set the color to white */
+    text-decoration: none;
+    padding: 10px 15px; /* Padding for links */
+    font-family: 'Courier New', Courier, monospace; /* Use the same font for all links */
+    cursor: pointer; /* Show pointer cursor on hover */
+}
+
+nav ul li span:hover {
+    background-color: #555; /* Background color on hover */
+}
+        /* Dropdown menu styling */
+        .dropdown-content {
+            display: none; /* Hide the dropdown content by default */
+            position: absolute;
+            background-color: #000000; /* Dropdown background color */
+            min-width: 160px; /* Minimum width of the dropdown */
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Add a shadow to the dropdown */
+            z-index: 1; /* Ensure it appears above other content */
+            text-align: left; /* Align text to the left */
+        }
+
+        .dropdown-content a {
+            color: white; /* Text color for dropdown links */
+            padding: 10px 15px; /* Padding for dropdown links */
+            text-decoration: none;
+            display: block; /* Make links block elements to fill the dropdown */
+        }
+
+        .dropdown-content a:hover {
+            background-color: #555; /* Change background on hover */
+        }
+
+        /* Show the dropdown content when hovering over the parent */
+        .dropdown:hover .dropdown-content {
+            display: block; /* Display the dropdown content on hover */
+        }
+                /* Footer styling for adikberadik logo */
+                .adikberadik-footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #555;
+            font-family: 'Gothic A1', sans-serif;
+        }
+
+        .adikberadik-logo {
+            font-size: 3em;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ffffff;
+            margin: 0 15px;
+            font-size: 0.9em;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .social-media {
+            margin-top: 10px;
+        }
+
+        .social-media a {
+            margin: 0 10px;
+        }
+
+        .social-media img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .footer-text {
+            font-size: 0.8em;
+            color: #aaaaaa;
+            margin-top: 15px;
+        }
+        .footer-logo-img {
+    width: 300px; /* Adjusted size to make it smaller */
+    height: auto;
+    margin-right: 10px;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html">
+            <img src="img/logo.png" alt="BudakMC Logo" class="logo">
+        </a>
+        <nav>
+            <ul id="navLinks">
+                <li><a href="index.html">Laman Utama</a></li>
+                <li><a href="faq.html">Soalan Lazim</a></li>
+                <li><a href="merch.html">Kedai</a></li>
+                <li><a href="license_keys.html">License Keys</a></li>
+                <li><a href="apply_staff.html">Permohonan Staff</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="faq">
+            <h1>Soalan Lazim</h1>
+            <div class="faq-item">
+                <h2>Apa itu BudakMC?</h2>
+                <p>Satu server minecraft yang baru ditubuhkan!</p>
+            </div>
+            <div class="faq-item">
+                <h2>Apakah maksud BudakMC?</h2>
+                <p>BudakMC ialah sekumpulan budak yang ingin bermain minecraft bersama!</p>
+            </div>
+            <div class="faq-item">
+                <h2>Apa itu SMP Epic?</h2>
+                <p>SMP epic kami yang mengunakan banyak custom gui seperti di survival</p>
+            </div>
+            <div class="faq-item">
+                <h2>Dimanakah BudakMC berasal?</h2>
+                <p>BudakMC berasal dari Malaysia tetapi kami menjalikan hubungan yang erat bersama Indonesia! </p>
+            </div>
+            <div class="faq-item">
+                <h2>Macam mana nak join BudakMC?</h2>
+                <p>Boleh lawati pautan server Discord rasmi kami di <a href="https://discord.gg/hCDqsGnPA5" target="_blank" style="color: #1e90ff;">sini</a>, dan ikuti patuhi prosedur yang telah ditetapkan!</p>
+            </div>
+        </div>
+    </main>
+    <!-- Footer Section with adikberadik logo and links -->
+    <footer class="adikberadik-footer">
+        <!-- Footer Logo with BudakMC Text -->
+        <div class="footer-logo">
+            <img src="img/logo.png" alt="BudakMC Logo" class="footer-logo-img"> <!-- Replace logo.png with the actual path to your logo image -->
+        </div>
+        <div class="footer-links">
+            <a href="index.html">𝙻𝚊𝚖𝚊𝚗 𝚄𝚝𝚊𝚖𝚊</a> |
+            <a href="error.html">𝙲𝚊𝚗𝚌𝚎𝚕𝚕𝚊𝚝𝚒𝚘𝚗 𝙿𝚘𝚕𝚒𝚌𝚢</a> |
+            <a href="error.html">𝙿𝚛𝚒𝚟𝚊𝚌𝚢 𝙿𝚘𝚕𝚒𝚌𝚢</a> |
+            <a href="error.html">𝚃𝚎𝚛𝚖𝚜 & 𝙲𝚘𝚗𝚍𝚒𝚝𝚒𝚘𝚗𝚜</a> |
+            <a href="error.html">𝙲𝚘𝚗𝚝𝚊𝚌𝚝 𝚄𝚜</a>
+        </div>
+        <div class="social-media">
+            <a href="https://www.tiktok.com/@kriscommunity" target="_blank"><img src="img/tiktok-icon.png" alt="TikTok"></a>
+            <a href="https://www.youtube.com/@KRISCommunity" target="_blank"><img src="img/youtube-icon.png" alt="YouTube"></a>
+            <a href="https://discord.gg/hCDqsGnPA5" target="_blank"><img src="img/discord-icon.png" alt="Discord"></a>
+        </div>
+        <p class="footer-text">&copy; 2024 BudakMC, All Rights Reserved | Dev by Farhan</p>
+    </footer>
+    <script>
+    </script>   
+</body>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BudakMC - Laman Utama</title>
+    <style>
+        body, html {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: #000000;
+            user-select: none; /* Disable text/image selection */
+            overflow: auto; /* Allows scrolling to reach the footer */
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #333;
+        }
+
+        .logo {
+            height: 150px;
+            margin-right: 20px;
+        }
+
+        nav {
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+        }
+
+        main {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 90vh;
+            padding-top: 20px; /* Space from top */
+            margin-bottom: 2000px; /* Add margin to prevent footer from being hidden */
+        }
+
+        .faq {
+            width: 100%; /* Memastikan bahagian FAQ mengambil lebar penuh */
+            max-width: 800px; /* Saiz maksimum untuk bahagian FAQ */
+            margin-top: 20px; /* Jarak atas */
+        }
+
+        .scroll-down-logo {
+            position: absolute;
+            color: aliceblue;
+            bottom: 60px;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            width: 40px;
+        }
+
+        .event-lepas {
+            position: absolute;
+            color: aliceblue;
+            bottom: -50px;
+            text-align: center;
+            font-size: 50px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .berita {
+            position: absolute; /* Position at the bottom */
+            color: aliceblue;
+            text-align: center;
+            font-size: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            bottom: -390px; /* Adjust distance from the bottom */
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%); /* Adjust for centering */
+            z-index: 1; /* Ensure it appears above other elements */
+        }
+
+        .slider-container {
+            position: absolute;
+            bottom: -300px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            overflow: hidden;
+            padding: 10px;
+            max-width: 90%;
+            cursor: default; /* Normal cursor */
+        }
+
+        .slider-track {
+            display: flex;
+            transition: transform 0.3s ease;
+        }
+
+        .slider-item {
+            width: 400px;
+            height: auto;
+            border-radius: 10px;
+            flex: 0 0 auto;
+            pointer-events: none; /* Disable any pointer events */
+            user-select: none; /* Disable selection */
+        }
+
+        /* Disable image dragging */
+        img {
+            -webkit-user-drag: none; /* For Safari and other WebKit browsers */
+        }
+
+        nav ul li span {
+            color: white; /* Set the color to white */
+            text-decoration: none;
+            padding: 10px 15px; /* Padding for links */
+            font-family: 'Courier New', Courier, monospace; /* Use the same font for all links */
+            cursor: pointer; /* Show pointer cursor on hover */
+        }
+
+        nav ul li span:hover {
+            background-color: #555; /* Background color on hover */
+        }
+
+        /* Dropdown menu styling */
+        .dropdown-content {
+            display: none; /* Hide the dropdown content by default */
+            position: absolute;
+            background-color: #000000; /* Dropdown background color */
+            min-width: 160px; /* Minimum width of the dropdown */
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Add a shadow to the dropdown */
+            z-index: 1; /* Ensure it appears above other content */
+            text-align: left; /* Align text to the left */
+        }
+
+        .dropdown-content a {
+            color: white; /* Text color for dropdown links */
+            padding: 10px 15px; /* Padding for dropdown links */
+            text-decoration: none;
+            display: block; /* Make links block elements to fill the dropdown */
+        }
+
+        .dropdown-content a:hover {
+            background-color: #555; /* Change background on hover */
+        }
+
+        /* Show the dropdown content when hovering over the parent */
+        .dropdown:hover .dropdown-content {
+            display: block; /* Display the dropdown content on hover */
+        }
+
+        .frame {
+            width: 90%;
+            max-width: 800px; /* Maximum width of the frame */
+            margin: 20px auto; /* Center the frame */
+            padding: 15px; /* Inner padding */
+            background-color: rgba(68, 68, 68, 0.8); /* Background color */
+            border-radius: 10px; /* Rounded corners */
+            color: white; /* Text color */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Shadow effect */
+            display: flex; /* Use flexbox for layout */
+            align-items: center; /* Center vertically */
+            position: absolute; /* Position at the bottom */
+            z-index: 2; /* Ensure it appears above other elements */
+            left: 10px;
+            bottom: -800px; /* Adjust distance from the bottom */
+            margin-bottom: 15px; /* Jarak antara setiap soalan */
+        }
+        .frame-img {
+    width: 40%; /* Full width of the frame */
+    height: 150px;
+    max-width: 600px; /* Maximum width for the image */
+    border-radius: 10px; /* Optional: rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Optional: shadow for effect */
+    margin-left: 180px; /* Adjust this value as needed */
+}
+        /* Footer styling for adikberadik logo */
+        .adikberadik-footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #555;
+            font-family: 'Gothic A1', sans-serif;
+        }
+
+        .adikberadik-logo {
+            height: 10px;
+            margin-right: 20px;
+            color: #ffffff;
+            size: 10%;
+        }
+
+        .footer-links a {
+            color: #ffffff;
+            margin: 0 15px;
+            font-size: 0.9em;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .social-media {
+            margin-top: 10px;
+        }
+
+        .social-media a {
+            margin: 0 10px;
+        }
+
+        .social-media img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .footer-text {
+            font-size: 0.8em;
+            color: #aaaaaa;
+            margin-top: 15px;
+        }
+        .footer-logo-img {
+    width: 300px; /* Adjusted size to make it smaller */
+    height: auto;
+    margin-right: 10px;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html">
+            <img src="img/logo.png" alt="BudakMC Logo" class="logo">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">𝙻𝚊𝚖𝚊𝚗 𝚄𝚝𝚊𝚖𝚊</a></li>
+                <li><a href="faq.html">𝚂𝚘𝚊𝚕𝚊𝚗 𝙻𝚊𝚣𝚒𝚖</a></li>
+                <li><a href="merch.html">𝙺𝚎𝚍𝚊𝚒</a></li>
+                <li><a href="license_keys.html">License Keys</a></li>
+                <li><a href="apply_staff.html">𝙿𝚎𝚛𝚖𝚘𝚑𝚘𝚗𝚊𝚗 𝚂𝚝𝚊𝚏𝚏</a></li>
+                <li id="authLink"></li> <!-- Placeholder for login/logout -->
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="faq">
+            <a href="index.html">
+                <img src="img/logo.png" alt="KRIS Academy logo" style="display: block; margin: 0 auto; max-width: 100%; height: auto;">
+            </a>
+        </div>
+        <img src="img/down.png" alt="Scroll Down" class="scroll-down-logo" id="scrollDownLogo">
+        <div class="event-lepas" id="scrollDownText">Secantik apa BUDAKMC?</div>
+        
+        <div class="slider-container" id="sliderContainer">
+            <div class="slider-track" id="sliderTrack">
+                <img class="slider-item" src="img/img1.png" alt="Image 1" draggable="false">
+                <img class="slider-item" src="img/img2.png" alt="Image 2" draggable="false">
+                <img class="slider-item" src="img/img3.png" alt="Image 3" draggable="false">
+                <img class="slider-item" src="img/img4.png" alt="Image 4" draggable="false">
+                <img class="slider-item" src="img/img5.png" alt="Image 5" draggable="false">
+                <img class="slider-item" src="img/img6.png" alt="Image 6" draggable="false">
+                <img class="slider-item" src="img/img7.png" alt="Image 7" draggable="false">
+                <img class="slider-item" src="img/img8.png" alt="Image 8" draggable="false">
+            </div>
+        </div>
+
+        <div class="berita">Berita Terkini BudakMC</div>
+        
+        <!-- New Frame for Event -->
+        <div class="frame">
+            <div>
+                <img class="frame-img" src="img/img2.png" alt="Event Image"> <!-- Replace with actual image path -->
+                <h2>News: BudakMC: Akan Buka Tidak Lama Lagi</h2>
+                <h2>Tarikh: ?/11/2024</h2>
+                <h2>Info: Boleh lihat di <a href="event.html" style="color: #1e90ff;">sini</a> untuk keterangan lanjut</h2>
+                <h3 style="font-weight: normal; font-size: 14px; color: #ccc; margin-top: 10px;">Created on: 24/10/2024</h3> <!-- Note for date created -->
+            </div>
+            <div class="frame">
+                <div>
+                    <h2>Coming Soon.</h2>
+                </div>
+        </div>
+    </main>
+
+    <!-- Footer Section with adikberadik logo and links -->
+    <footer class="adikberadik-footer">
+        <!-- Footer Logo with Kris Community Text -->
+        <div class="footer-logo">
+            <img src="img/logo.png" alt="Kris Community Logo" class="footer-logo-img"> <!-- Replace logo.png with the actual path to your logo image -->
+        </div>
+        <div class="footer-links">
+            <a href="index.html">𝙻𝚊𝚖𝚊𝚗 𝚄𝚝𝚊𝚖𝚊</a> |
+            <a href="error.html">𝙲𝚊𝚗𝚌𝚎𝚕𝚕𝚊𝚝𝚒𝚘𝚗 𝙿𝚘𝚕𝚒𝚌𝚢</a> |
+            <a href="error.html">𝙿𝚛𝚒𝚟𝚊𝚌𝚢 𝙿𝚘𝚕𝚒𝚌𝚢</a> |
+            <a href="error.html">𝚃𝚎𝚛𝚖𝚜 & 𝙲𝚘𝚗𝚍𝚒𝚝𝚒𝚘𝚗𝚜</a> |
+            <a href="error.html">𝙲𝚘𝚗𝚝𝚊𝚌𝚝 𝚄𝚜</a>
+        </div>
+        <div class="social-media">
+            <a href="https://www.tiktok.com/@kriscommunity" target="_blank"><img src="img/tiktok-icon.png" alt="TikTok"></a>
+            <a href="https://www.youtube.com/@KRISCommunity" target="_blank"><img src="img/youtube-icon.png" alt="YouTube"></a>
+            <a href="https://discord.gg/hCDqsGnPA5" target="_blank"><img src="img/discord-icon.png" alt="Discord"></a>
+        </div>
+        <p class="footer-text">&copy; 2024 BudakMC, All Rights Reserved | Dev by Farhan</p>
+    </footer>
+    <script>
+
+const loggedInUser = localStorage.getItem('loggedInUser');
+        const authLink = document.getElementById('authLink');
+
+        if (loggedInUser) {
+            authLink.innerHTML = `<a href="#" onclick="logout()">Logout</a>`;
+        } else {
+            authLink.innerHTML = `<a href="login.html">Login</a>`;
+        }
+
+        // Logout function
+        function logout() {
+            localStorage.removeItem('loggedInUser');
+            alert('You have been logged out.');
+            window.location.href = 'login.html'; // Redirect to login
+        }
+        document.addEventListener('contextmenu', event => event.preventDefault()); // Disable right-click
+
+        const sliderContainer = document.getElementById('sliderContainer');
+        const sliderTrack = document.getElementById('sliderTrack');
+        const sliderItems = document.querySelectorAll('.slider-item');
+        const totalItems = sliderItems.length / 2; // Only count unique images
+        let currentTranslate = 0;
+        let prevTranslate = 0;
+        let autoSlideInterval;
+
+        // Set the width of the track to fit all items
+        sliderTrack.style.width = ${sliderItems.length * 400}px;
+
+        // Start auto-sliding
+        startAutoSlide();
+
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(() => {
+                const itemWidth = 400; // Width of each item
+                currentTranslate -= itemWidth; // Move to the left
+                // If we have scrolled past the last unique image, reset to start
+                if (Math.abs(currentTranslate) >= (itemWidth * totalItems)) {
+                    currentTranslate = 0; // Reset to start
+                }
+                sliderTrack.style.transform = translateX(${currentTranslate}px);
+            }, 3000); // Change image every 3 seconds
+        }
+    </script>
+</body>
+</html>
